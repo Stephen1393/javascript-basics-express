@@ -1,0 +1,22 @@
+- Aim of Project
+
+Aim of project is to practise end-to-end testing by testing of previous javascript-basics logic through an Express API. Tests have been updated and the aim is to write the routes with express to pass the tests.
+
+The original JavaScript logic lives in `src/lib/` and is reused withthout updating.
+New tests have been added that make HTTP requests to an Express app using Supertest.
+
+The task is to write the correct Express routes in `src/app.js` so that each one:
+
+- responds to the correct HTTP method and path
+- returns the correct HTTP status code
+- returns the expected JSON response
+
+This allows the same logic to be tested end-to-end:
+request → route → logic → response.
+
+## Progress
+
+- [ ] strings
+- [ ] arrays
+- [ ] booleans
+- [ ] numbers
