@@ -3,59 +3,64 @@ const app = require('../src/app');
 
 describe('/numbers', () => {
   describe('GET /add/{number}/and/{number}', () => {
-    xit('adds 2 and 1', done => {
+    it('adds 2 and 1', done => {
       request(app)
         .get('/numbers/add/2/and/1')
         .then(res => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 3 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('adds 12 and 0', done => {
+    it('adds 12 and 0', done => {
       request(app)
         .get('/numbers/add/12/and/0')
         .then(res => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 12 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('adds 10 and -5', done => {
+    it('adds 10 and -5', done => {
       request(app)
         .get('/numbers/add/10/and/-5')
         .then(res => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 5 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('errors if the parameters are not numbers', done => {
+    it('errors if the parameters are not numbers', done => {
       request(app)
         .get('/numbers/add/fish/and/chips')
         .then(res => {
           expect(res.status).toEqual(400);
           expect(res.body).toEqual({ error: 'Parameters must be valid numbers.' });
           done();
-        });
+        })
+        .catch(done);
     });
   });
 
   describe('GET /subtract/{number}/from/{number}', () => {
-    xit('subtracts 2 from 1', done => {
+    it('subtracts 2 from 1', done => {
       request(app)
         .get('/numbers/subtract/2/from/1')
         .then(res => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: -1 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('subtracts -2 from 1', done => {
+    it('subtracts -2 from 1', done => {
       request(app)
         .get('/numbers/subtract/-2/from/1')
         .then(res => {
@@ -65,7 +70,7 @@ describe('/numbers', () => {
         });
     });
 
-    xit('errors if the parameters are not numbers', done => {
+    it('errors if the parameters are not numbers', done => {
       request(app)
         .get('/numbers/subtract/fish/from/chips')
         .then(res => {
