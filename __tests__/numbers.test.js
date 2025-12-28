@@ -82,7 +82,7 @@ describe('/numbers', () => {
   });
 
   describe('POST /multiply', () => {
-    xit('multiplies two numbers', done => {
+    it('multiplies two numbers', done => {
       request(app)
         .post('/numbers/multiply')
         .send({ a: 10, b: 3 })
@@ -93,7 +93,7 @@ describe('/numbers', () => {
         });
     });
 
-    xit('multiplies stringified numbers', done => {
+    it('multiplies stringified numbers', done => {
       request(app)
         .post('/numbers/multiply')
         .send({ a: '-4', b: '-9' })
@@ -101,10 +101,11 @@ describe('/numbers', () => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 36 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('errors if a parameter is missing', done => {
+    it('errors if a parameter is missing', done => {
       request(app)
         .post('/numbers/multiply')
         .send({ a: 'fish' })
@@ -112,10 +113,11 @@ describe('/numbers', () => {
           expect(res.status).toEqual(400);
           expect(res.body).toEqual({ error: 'Parameters "a" and "b" are required.' });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('errors if the parameters are not numbers', done => {
+    it('errors if the parameters are not numbers', done => {
       request(app)
         .post('/numbers/multiply')
         .send({ a: 'fish', b: 'chips' })
@@ -123,7 +125,8 @@ describe('/numbers', () => {
           expect(res.status).toEqual(400);
           expect(res.body).toEqual({ error: 'Parameters "a" and "b" must be valid numbers.' });
           done();
-        });
+        })
+        .catch(done);
     });
   });
 
