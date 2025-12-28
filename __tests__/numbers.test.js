@@ -205,7 +205,7 @@ describe('/numbers', () => {
   });
 
   describe('POST /remainder', () => {
-    xit('gives the remainder of dividing 18 by 5', done => {
+    it('gives the remainder of dividing 18 by 5', done => {
       request(app)
         .post('/numbers/remainder')
         .send({ a: 18, b: 5 })
@@ -213,10 +213,11 @@ describe('/numbers', () => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 3 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('gives the remainder of dividing -4 by 8', done => {
+    it('gives the remainder of dividing -4 by 8', done => {
       request(app)
         .post('/numbers/remainder')
         .send({ a: '-4', b: '8' })
@@ -224,10 +225,11 @@ describe('/numbers', () => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: -4 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('gives the remainder of dividing 0 by a number', done => {
+    it('gives the remainder of dividing 0 by a number', done => {
       request(app)
         .post('/numbers/remainder')
         .send({ a: 0, b: 10 })
@@ -235,10 +237,11 @@ describe('/numbers', () => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 0 });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('errors if dividing by 0', done => {
+    it('errors if dividing by 0', done => {
       request(app)
         .post('/numbers/remainder')
         .send({ a: 10, b: 0 })
@@ -246,10 +249,11 @@ describe('/numbers', () => {
           expect(res.status).toEqual(400);
           expect(res.body).toEqual({ error: 'Unable to divide by 0.' });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('errors if a parameter is missing', done => {
+    it('errors if a parameter is missing', done => {
       request(app)
         .post('/numbers/remainder')
         .send({ a: 'fish' })
@@ -257,10 +261,11 @@ describe('/numbers', () => {
           expect(res.status).toEqual(400);
           expect(res.body).toEqual({ error: 'Parameters "a" and "b" are required.' });
           done();
-        });
+        })
+        .catch(done);
     });
 
-    xit('errors if the parameters are not numbers', done => {
+    it('errors if the parameters are not numbers', done => {
       request(app)
         .post('/numbers/remainder')
         .send({ a: 'fish', b: 'chips' })
@@ -268,7 +273,8 @@ describe('/numbers', () => {
           expect(res.status).toEqual(400);
           expect(res.body).toEqual({ error: 'Parameters must be valid numbers.' });
           done();
-        });
+        })
+        .catch(done);
     });
   });
 });
