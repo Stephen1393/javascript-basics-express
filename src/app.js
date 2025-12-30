@@ -8,6 +8,7 @@ const {
 } = require('./lib/strings');
 
 const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
+const { getNthElement, arrayToCSVString, addToArray } = require('./lib/arrays');
 
 const app = express();
 
@@ -121,5 +122,24 @@ app.post('/numbers/remainder', (req, res) => {
     return res.status(400).json({ error: 'Unable to divide by 0.' });
   }
   return res.status(200).json({ result: remainder(num1, num2) });
+});
+
+app.post('/arrays/element-at-index/:index', (req, res) => {
+  const { index } = req.params;
+  const idx = Number(index);
+  const { array } = req.body;
+  const result = getNthElement(idx, array);
+  res.status(200).json({ result });
+});
+
+app.post('/arrays/to-string', (req, res) => {
+  const { array } = req.body;
+  const result = arrayToCSVString(array);
+  res.status(200).json({ result });
+});
+
+app.post('/arrays/append', (req, res) => {
+  const { array, value } = req.body;
+  res.status(200).json({ result: addToArray(value, array) });
 });
 module.exports = app;

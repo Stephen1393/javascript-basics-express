@@ -13,7 +13,7 @@ const {
   elementsStartingWithAVowel,
   removeSpaces,
   sumNumbers,
-  sortByLastLetter
+  sortByLastLetter,
 } = require('../arrays');
 
 describe('getNthElement', () => {
@@ -50,8 +50,8 @@ describe('addToArray', () => {
     const array = [];
     const array2 = [1, 2, 3];
 
-    expect(addToArray('a', array)).toEqual(undefined);
-    expect(addToArray(4, array2)).toEqual(undefined);
+    expect(addToArray('a', array)).toEqual(['a']);
+    expect(addToArray(4, array2)).toEqual([1, 2, 3, 4]);
 
     expect(array).toEqual(['a']);
     expect(array2).toEqual([1, 2, 3, 4]);
@@ -76,7 +76,7 @@ describe('removeNthElement', () => {
     const array = ['ant', 'bison', 'cockerel', 'duck', 'elephant'];
     removeNthElement(2, array);
     expect(array).toEqual(['ant', 'bison', 'duck', 'elephant']);
-    
+
     const arrayTwo = ['thing 1', 'thing 2', 'thing 3', 'thing 4', 'thing 5'];
     removeNthElement(0, arrayTwo);
     expect(arrayTwo).toEqual(['thing 2', 'thing 3', 'thing 4', 'thing 5']);
@@ -92,31 +92,15 @@ describe('numbersToStrings', () => {
 
 describe('uppercaseWordsInArray', () => {
   it('makes every string in the array uppercase', () => {
-    expect(uppercaseWordsInArray(['cat', 'mouse', 'banana'])).toEqual([
-      'CAT',
-      'MOUSE',
-      'BANANA'
-    ]);
-    expect(uppercaseWordsInArray(['romy', 'mo', 'baNana'])).toEqual([
-      'ROMY',
-      'MO',
-      'BANANA'
-    ]);
+    expect(uppercaseWordsInArray(['cat', 'mouse', 'banana'])).toEqual(['CAT', 'MOUSE', 'BANANA']);
+    expect(uppercaseWordsInArray(['romy', 'mo', 'baNana'])).toEqual(['ROMY', 'MO', 'BANANA']);
   });
 });
 
 describe('reverseWordsInArray', () => {
   it('reverses every string in an array', () => {
-    expect(reverseWordsInArray(['cat', 'Mouse', 'banana'])).toEqual([
-      'tac',
-      'esuoM',
-      'ananab'
-    ]);
-    expect(reverseWordsInArray(['dog', 'cat', 'fig'])).toEqual([
-      'god',
-      'tac',
-      'gif'
-    ]);
+    expect(reverseWordsInArray(['cat', 'Mouse', 'banana'])).toEqual(['tac', 'esuoM', 'ananab']);
+    expect(reverseWordsInArray(['dog', 'cat', 'fig'])).toEqual(['god', 'tac', 'gif']);
   });
 });
 
@@ -167,16 +151,10 @@ describe('elementsStartingWithAVowel', () => {
         'wupple',
         'xupple',
         'yupple',
-        'zupple'
-      ])
+        'zupple',
+      ]),
     ).toEqual(['apple', 'epple', 'ipple', 'opple', 'upple']);
-    expect(
-      elementsStartingWithAVowel([
-        'aaaa',
-        'bbbb',
-        'eeee',
-      ])
-    ).toEqual(['aaaa', 'eeee']);
+    expect(elementsStartingWithAVowel(['aaaa', 'bbbb', 'eeee'])).toEqual(['aaaa', 'eeee']);
   });
 
   xit('is case insensitive', () => {
@@ -207,27 +185,17 @@ describe('elementsStartingWithAVowel', () => {
         'Wupple',
         'Xupple',
         'Yupple',
-        'Zupple'
-      ])
+        'Zupple',
+      ]),
     ).toEqual(['Apple', 'Epple', 'Ipple', 'Opple', 'Upple']);
-     expect(
-      elementsStartingWithAVowel([
-        'Aaaa',
-        'Bbbb',
-        'Eeee',
-      ])
-    ).toEqual(['Aaaa', 'Eeee']);
+    expect(elementsStartingWithAVowel(['Aaaa', 'Bbbb', 'Eeee'])).toEqual(['Aaaa', 'Eeee']);
   });
 });
 
 describe('removeSpaces', () => {
   it('returns the string with the space characters removed', () => {
-    expect(removeSpaces('this string has spaces')).toEqual(
-      'thisstringhasspaces'
-    );
-    expect(removeSpaces(' this one has sneaky   spaces ')).toEqual(
-      'thisonehassneakyspaces'
-    );
+    expect(removeSpaces('this string has spaces')).toEqual('thisstringhasspaces');
+    expect(removeSpaces(' this one has sneaky   spaces ')).toEqual('thisonehassneakyspaces');
   });
 });
 
@@ -240,11 +208,17 @@ describe('sumNumbers', () => {
 
 describe('sortByLastLetter', () => {
   it('sorts the string by the last character', () => {
-    expect(
-      sortByLastLetter(['Lannister', 'Stark', 'Greyjoy', 'Targaryen'])
-    ).toEqual(['Stark', 'Targaryen', 'Lannister', 'Greyjoy']);
-    expect(
-      sortByLastLetter(['Mo', 'Romy', 'Miguel', 'Martyna'])
-    ).toEqual(['Martyna', 'Miguel', 'Mo', 'Romy']);
+    expect(sortByLastLetter(['Lannister', 'Stark', 'Greyjoy', 'Targaryen'])).toEqual([
+      'Stark',
+      'Targaryen',
+      'Lannister',
+      'Greyjoy',
+    ]);
+    expect(sortByLastLetter(['Mo', 'Romy', 'Miguel', 'Martyna'])).toEqual([
+      'Martyna',
+      'Miguel',
+      'Mo',
+      'Romy',
+    ]);
   });
 });

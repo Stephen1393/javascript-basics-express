@@ -3,7 +3,7 @@ const app = require('../src/app');
 
 describe('/arrays', () => {
   describe('POST /element-at-index/{index}', () => {
-    xit('returns the element at the given index', done => {
+    it('returns the element at the given index', done => {
       request(app)
         .post('/arrays/element-at-index/2')
         .send({ array: ['cat', 'dog', 'elephant', 'fox'] })
@@ -11,12 +11,13 @@ describe('/arrays', () => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 'elephant' });
           done();
-        });
+        })
+        .catch(done);
     });
   });
 
   describe('POST /to-string', () => {
-    xit('returns the stringified array', done => {
+    it('returns the stringified array', done => {
       request(app)
         .post('/arrays/to-string')
         .send({ array: ['cat', 'dog', 'elephant', 'fox'] })
@@ -24,12 +25,13 @@ describe('/arrays', () => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 'cat,dog,elephant,fox' });
           done();
-        });
+        })
+        .catch(done);
     });
   });
 
   describe('POST /append', () => {
-    xit('returns an array with the value appended', done => {
+    it('returns an array with the value appended', done => {
       request(app)
         .post('/arrays/append')
         .send({
@@ -40,7 +42,8 @@ describe('/arrays', () => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: ['cat', 'dog', 'elephant', 'fox', 'gorilla'] });
           done();
-        });
+        })
+        .catch(done);
     });
   });
 
