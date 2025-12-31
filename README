@@ -17,6 +17,6 @@ request → route → logic → response.
 ## Progress
 
 - [x] strings
-- [ ] arrays
+- [x] arrays
 - [ ] booleans
 - [ ] numbers

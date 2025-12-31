@@ -8,7 +8,13 @@ const {
 } = require('./lib/strings');
 
 const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
-const { getNthElement, arrayToCSVString, addToArray } = require('./lib/arrays');
+const {
+  getNthElement,
+  arrayToCSVString,
+  addToArray,
+  elementsStartingWithAVowel,
+  removeNthElement,
+} = require('./lib/arrays');
 
 const app = express();
 
@@ -141,5 +147,19 @@ app.post('/arrays/to-string', (req, res) => {
 app.post('/arrays/append', (req, res) => {
   const { array, value } = req.body;
   res.status(200).json({ result: addToArray(value, array) });
+});
+
+app.post('/arrays/starts-with-vowel', (req, res) => {
+  const { array } = req.body;
+  res.status(200).json({ result: elementsStartingWithAVowel(array) });
+});
+
+app.post('/arrays/remove-element', (req, res) => {
+  const { array } = req.body;
+  const index = req.query === undefined ? 0 : Number(req.query.index);
+
+  removeNthElement(index, array);
+
+  res.status(200).json({ result: array });
 });
 module.exports = app;
