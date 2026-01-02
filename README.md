@@ -1,50 +1,22 @@
-# JavaScript Basics in Express
+- Aim of Project
 
-## Getting started
+Aim of project is to practise end-to-end testing by testing of previous javascript-basics logic through an Express API. Tests have been updated and the aim is to write the routes with express to pass the tests.
 
-Ensure your Visual Studio Code application is up to date, and that you have the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) installed and enabled.
+The original JavaScript logic lives in `src/lib/` and is reused withthout updating.
+New tests have been added that make HTTP requests to an Express app using Supertest.
 
-Run the commands below inside your `Projects` folder.
+The task is to write the correct Express routes in `src/app.js` so that each one:
 
-If you have set up an SSH key in your Github Account then feel free to clone this repo using SSH as follows:
-```bash
-git clone git@github.com:CommandShiftHQ/javascript-basics-express.git
-```
+- responds to the correct HTTP method and path
+- returns the correct HTTP status code
+- returns the expected JSON response
 
-Otherwise clone is as you normally would by URL with
-```bash
-git clone https://github.com/CommandShiftHQ/javascript-basics-express
-```
+This allows the same logic to be tested end-to-end:
+request → route → logic → response.
 
-Once cloned ensure you install its dependencies:
-```bash
-cd javascript-basics-express
-```
-```bash
-npm install
-```
+## Progress
 
-## Copy over your JavaScript Basics code
-
-:rotating_light: **Important!**
-
-This exercise makes use of your previous `javascript-basics` code. Copy the files from that project's `src/` folder into a new `lib/` directory in this repository's `src` directory. You should end up with the following file structure in this project:
-
-```
-src
-├── app.js
-└── lib
-    ├── arrays.js
-    ├── booleans.js
-    ├── numbers.js
-    ├── objects.js
-    └── strings.js
-```
-
-## Running tests
-
-You can run tests with the `npm test` command.
-
-## Remember: READMEs are important!
-
-When you're finished, be sure to rewrite this one so it's more specific to your project.
+- [x] strings
+- [x] arrays
+- [ ] booleans
+- [x] numbers
