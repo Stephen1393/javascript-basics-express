@@ -18,5 +18,5 @@ request → route → logic → response.
 
 - [x] strings
 - [x] arrays
-- [ ] booleans
+- [x] booleans
 - [x] numbers
